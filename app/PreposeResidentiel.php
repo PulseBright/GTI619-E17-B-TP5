@@ -7,8 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class PreposeResidentiel extends Authenticatable
 {
+	public $table = 'preposeresidentiels';
     use Notifiable;
-
+	
     protected $guard = 'preposeResidentiel';
 
     /**

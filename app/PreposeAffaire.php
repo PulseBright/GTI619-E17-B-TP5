@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class PreposeAffaire extends Authenticatable
 {
+	public $table = 'preposeaffaires';
     use Notifiable;
 
     protected $guard = 'preposeAffaire';
