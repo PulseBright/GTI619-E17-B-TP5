@@ -1,0 +1,70 @@
+﻿Commandes à lancer quand quelqu'un checkout cette branche :
+
+Au root de l'application, dans GIT BASH : 
+composer update
+=> Ça va uploader zizaco/entrust.
+
+php artisan vendor:publish
+=> Ça va créer les fichiers pour entrust nécessaire.
+PS. : Si jamais à cette étape entrust.php n'est pas dans le dossier "config", il faut allez dans le répertoire "Code\GTI619-scrub\vendor\zizaco\entrust\src\config", copier en renommant le fichier "config.php" à "entrust.php" dans le dossier "config."
+
+php artisan config:clear
+
+php artisan entrust:migration
+=> Ça va créer les tables nécessaires au bon fonctionnement de entrust.
+
+composer dump-autoload
+
+Voilà vous êtes prêt à utiliser entrust. Now get moving~
+
+Dans Tinker pour créer les rôles dans les bonnes bases de données :
+
+$admin = new App\Role();
+$admin->name         = 'admin';
+$admin->display_name = 'Administrateur';
+$admin->save();
+
+$pa = new App\Role();
+$pa->name		= 'pa';
+$pa->display_name	= 'Préposé aux clients d\'affaire';
+$pa->save();
+
+$pr = new App\Role();
+$pr->name		= 'pr';
+$pr->display_name	= 'Préposé aux clients résidentiels';
+$pr->save();
+
+DANS LA MÊME SESSION DE TINKER, pour créer les bons users :
+
+$user = new App\User();
+$user->id = rand();
+$user->name = 'Administrateur';
+$user->email = 'admin@admin.com';
+$user->password = Hash::make('bluepotato*12');
+$user->save();
+
+$user = new App\User();
+$user->id = rand();
+$user->name = 'Utilisateur1';
+$user->email = 'utilisateur1@user.com';
+$user->password = Hash::make('redcelery#34');
+$user->save();
+
+$user = new App\User();
+$user->id = rand();
+$user->name = 'Utilisateur2';
+$user->email = 'utilisateur2@user.com';
+$user->password = Hash::make('greengoat$56');
+$user->save();
+
+$user = User::where('name', '=', 'Administrateur')->first();
+$adminRole = DB::table('roles')->where('name', '=', 'admin')->pluck('id');
+$user->roles()->attach($adminRole);
+
+$user = User::where('name', '=', 'Utilisateur1')->first();
+$prRole = DB::table('roles')->where('name', '=', 'pr')->pluck('id');
+$user->roles()->attach($prRole);
+
+$user = User::where('name', '=', 'Utilisateur2')->first();
+$paRole = DB::table('roles')->where('name', '=', 'pa')->pluck('id');
+$user->roles()->attach($paRole);
