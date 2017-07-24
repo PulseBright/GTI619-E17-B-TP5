@@ -35,7 +35,3 @@ Route::get('/pa/login', 'Auth\PreposeAffaireLoginController@showLoginForm')->nam
 Route::post('/pa/login', 'Auth\PreposeAffaireLoginController@login')->name('pa.login.submit');
 Route::get('/pa/home', 'PreposeAffaireController@index')->name('homepa');
 
-
-
-
-
