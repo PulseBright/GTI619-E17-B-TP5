@@ -8,11 +8,11 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in as ADMIN!
+                    Bienvenue, {{{ Auth::user()->name }}}.
                     <br>
-                    <a href="/parametres"> checker les parametres</a>
+                    <a href="/parametres">MODIFIER LES PARAMÈTRES</a>
                     <br>
-                    
+                    <a href="/parametres">AJOUTER UN UTILISATEUR</a>
                 </div>
             </div>
         </div>
