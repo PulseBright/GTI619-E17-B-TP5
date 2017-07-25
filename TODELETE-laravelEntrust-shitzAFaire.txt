@@ -68,3 +68,17 @@ $user->roles()->attach($prRole);
 $user = User::where('name', '=', 'Utilisateur2')->first();
 $paRole = DB::table('roles')->where('name', '=', 'pa')->pluck('id');
 $user->roles()->attach($paRole);
+
+$createUser = new App\Permission();
+$createUser->name         = 'create-user';
+$createUser->display_name = 'Create Users';
+$createUser->description  = 'Create a new user.';
+$createUser->save();
+
+$setSecurity = new App\Permission();
+$setSecurity->name         = 'set-security';
+$setSecurity->display_name = 'Set Security';
+$setSecurity->description  = 'Set some security parameters.';
+$setSecurity->save();
+
+$admin->attachPermissions(array($createUser, $setSecurity));

@@ -17,12 +17,32 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 
-	Route::prefix('admin')->group(function(){
-Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-Route::get('/', 'AdminController@index')->name('homeadmin');
+Route::get('/home', array('before' => 'auth', function()
+{
+    if(Entrust::hasRole('pa')) {
+		return View::make('homepa');
+	}
+	else if(Entrust::hasRole('admin')) {
+		return View::make('homeadmin');
+	}
+	else if(Entrust::hasRole('pr')){
+		return View::make('homepr');
+	}
+	else {
+		Auth::logout();
+		return Redirect::to('/login')
+			->with('flash_notice', 'Acc&#232;s refus&#233;!');
+	}
+}));
+
+
+/*
+Route::prefix('admin')->group(function(){
+	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+	Route::get('/', 'AdminController@index')->name('homeadmin');
 });
 
 Route::get('/parametres', 'AdminController@parametres')->name('parametres');
@@ -34,4 +54,4 @@ Route::get('/pr/home', 'PreposeResidentielController@index')->name('homepr');
 Route::get('/pa/login', 'Auth\PreposeAffaireLoginController@showLoginForm')->name('pa.login');
 Route::post('/pa/login', 'Auth\PreposeAffaireLoginController@login')->name('pa.login.submit');
 Route::get('/pa/home', 'PreposeAffaireController@index')->name('homepa');
-
+*/
