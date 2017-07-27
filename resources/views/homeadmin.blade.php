@@ -64,9 +64,29 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Tableau de bord de l'administrateur</div>
                 <div class="panel-body">
-                    <a href="/parametres">MODIFIER LES PARAMÈTRES</a>
+                    <h2>Paramètres de sécurité</h2>
                     <br>
-                    <a href="/parametres">AJOUTER UN UTILISATEUR</a>
+					<form method="POST" action="/posts">
+					{{ csrf_field() }}
+					
+						<div class="form-group">
+							<label for="nbTentative">Nombre de tentatives d’authentification maximal</label>
+							<input type="text" class="form-control" id="nbTentative" name="nbTentative">
+						</div>
+						
+						<div class="form-group">
+							<label for="delai">Délais d’attente entre chaque tentative échouée</label>
+							<input type="text" class="form-control" id="delai" name="delai">
+						</div>
+						
+						<div class="form-group">
+							<label for="delai">Changement de mot de passe</label>
+							<input type="radio" class="form-control" id="delai" name="delai" value="">
+							<input type="radio" class="form-control" id="delai" name="delai" value="">
+						</div>
+					
+						<button type="submit" class="btn btn-primary">Modifier</button>
+					</form>
                 </div>
             </div>
         </div>
