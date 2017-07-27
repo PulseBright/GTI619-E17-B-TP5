@@ -80,9 +80,17 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="delai">Changement de mot de passe</label>
-							<input type="radio" class="form-control" id="delai" name="delai" value="">
-							<input type="radio" class="form-control" id="delai" name="delai" value="">
+							<label for="duree">Durée d'un mot de passe</label>
+							<input type="text" class="form-control" id="duree" name="duree">
+						</div>
+						
+						<div class="form-group">
+							<label for="mdpminimum">Mot de passe : minimum</label>
+							<input type="text" class="form-control" id="mdpminimum" name="mdpminimum">
+							<label for="mdpmaximum">Mot de passe : maximum</label>
+							<input type="text" class="form-control" id="mdpmaximum" name="mdpmaximum">
+							<label for="complexite">Mot de passe : complexité</label>
+							<input type="text" class="form-control" id="complexite" name="complexite">
 						</div>
 					
 						<button type="submit" class="btn btn-primary">Modifier</button>
