@@ -66,12 +66,12 @@
                 <div class="panel-body">
                     <h2>Paramètres de sécurité</h2>
                     <br>
-					<form method="POST" action="/posts">
+					<form method="POST" action="/security">
 					{{ csrf_field() }}
 					
 						<div class="form-group">
 							<label for="nbTentative">Nombre de tentatives d’authentification maximal</label>
-							<input type="text" class="form-control" id="nbTentative" name="nbTentative">
+							<input type="text" class="form-control" id="nbTentative" name="nbTentative" text="{{ config('') }}">
 						</div>
 						
 						<div class="form-group">
@@ -80,7 +80,7 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="duree">Durée d'un mot de passe</label>
+							<label for="duree">Durée d'un mot de passe (en jours)</label>
 							<input type="text" class="form-control" id="duree" name="duree">
 						</div>
 						

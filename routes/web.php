@@ -38,3 +38,5 @@ Route::get('/home', array('before' => 'auth', function()
 			->with('flash_notice', 'Acc&#232;s refus&#233;!');
 	}
 }));
+
+Route::post('/security', 'AdminController@edit');
