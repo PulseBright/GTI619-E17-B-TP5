@@ -9,10 +9,21 @@
 
                 <div class="panel-body">
                     Bienvenue, {{{ Auth::user()->name }}}.
-                    <br>
-                    <a href="/parametres">LISTE DES CLIENTS</a>
-                    <br>
-                    
+                    <br><br>
+                    <table border="1">
+						<tr>
+							<th>Prenom</th>
+							<th>Nom de famille</th>
+							<th>Adresse courriel</th>
+						</tr>
+						@foreach ($clientspa as $client)
+						<tr>
+							<td>{{ $client->firstname }}</td>
+							<td>{{ $client->lastname }}</td>
+							<td>{{ $client->email }}</td>
+						</tr>
+						@endforeach
+					</table>
                 </div>
             </div>
         </div>

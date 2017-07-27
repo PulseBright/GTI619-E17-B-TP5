@@ -22,13 +22,15 @@ Auth::routes();
 Route::get('/home', array('before' => 'auth', function()
 {
     if(Entrust::hasRole('pa')) {
-		return View::make('homepa');
+		$clientspa = DB::table('clients')->where('type', 'pa')->get();
+		return View::make('homepa', compact('clientspa'));
 	}
 	else if(Entrust::hasRole('admin')) {
 		return View::make('homeadmin');
 	}
 	else if(Entrust::hasRole('pr')){
-		return View::make('homepr');
+		$clientspr = DB::table('clients')->where('type', 'pr')->get();
+		return View::make('homepr', compact('clientspr'));
 	}
 	else {
 		Auth::logout();
