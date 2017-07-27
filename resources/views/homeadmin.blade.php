@@ -71,7 +71,7 @@
 					
 						<div class="form-group">
 							<label for="nbTentative">Nombre de tentatives d’authentification maximal</label>
-							<input type="text" class="form-control" id="nbTentative" name="nbTentative" text="{{ config('') }}">
+							<input type="text" class="form-control" id="nbTentative" name="nbTentative" text="{{ config('auth.maxAttempts') }}">
 						</div>
 						
 						<div class="form-group">

@@ -152,5 +152,16 @@ return [
             'expire' => 60,
         ],
     ],
+	
+	/*
+		Following is home-made variable to determine max login attempt and cooldown time.
+	*/
+	
+	
+	'maxAttempts' 	=> 3,
+	'cooldownTime' 	=> 1,
 
 ];
+
+
+	
