@@ -9,13 +9,43 @@ class EventServiceProvider extends ServiceProvider
 {
     /**
      * The event listener mappings for the application.
-     *
+	  références pour logger les enregistrement, login, lockout, logout, etc.
+     *https://laravel.com/docs/5.4/authentication#authenticating-users
+	  https://laravel.com/docs/5.4/events
      * @var array
      */
     protected $listen = [
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+
+	'Illuminate\Auth\Events\Registered' => [
+        'App\Listeners\LogRegisteredUser',
+    ],
+
+    'Illuminate\Auth\Events\Attempting' => [
+        'App\Listeners\LogAuthenticationAttempt',
+    ],
+
+    'Illuminate\Auth\Events\Authenticated' => [
+        'App\Listeners\LogAuthenticated',
+    ],
+
+    'Illuminate\Auth\Events\Login' => [
+        'App\Listeners\LogSuccessfulLogin',
+    ],
+
+    'Illuminate\Auth\Events\Failed' => [
+        'App\Listeners\LogFailedLogin',
+    ],
+
+    'Illuminate\Auth\Events\Logout' => [
+        'App\Listeners\LogSuccessfulLogout',
+    ],
+
+    'Illuminate\Auth\Events\Lockout' => [
+        'App\Listeners\LogLockout',
+    ],
     ];
 
     /**
