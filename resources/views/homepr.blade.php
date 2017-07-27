@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<center><h2>Bienvenue, <strong>{{{ Auth::user()->name }}}</strong>, sur votre page d'accueil.</h2></center>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Clients résidentiels</div>
 
                 <div class="panel-body">
-                    Bienvenue, {{{ Auth::user()->name }}}.
-                    <br><br>
 					
 					<table border="1">
 						<tr>
@@ -17,11 +16,11 @@
 							<th>Nom de famille</th>
 							<th>Adresse courriel</th>
 						</tr>
-						@foreach ($clientspr as $client)
+						@foreach ($clientspr as $clientpr)
 						<tr>
-							<td>{{ $client->firstname }}</td>
-							<td>{{ $client->lastname }}</td>
-							<td>{{ $client->email }}</td>
+							<td>{{ $clientpr->firstname }}</td>
+							<td>{{ $clientpr->lastname }}</td>
+							<td>{{ $clientpr->email }}</td>
 						</tr>
 						@endforeach
 					</table>
@@ -32,4 +31,3 @@
     </div>
 </div>
 @endsection
-
